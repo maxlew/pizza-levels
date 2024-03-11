@@ -1,5 +1,5 @@
 type StarProps = {
-  style: 'Full' | 'Half' | 'Empty'
+  style?: 'Full' | 'Half' | 'Empty'
 }
 
 export default function Star({ style = 'Full' }: StarProps) {

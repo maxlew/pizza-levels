@@ -13,4 +13,4 @@ export default [
     rating: 4.5,
     notes: 'Closed now sadly'
   },
-]
+] as PizzaData[]
