@@ -1,4 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Pizza Levels is a ongoing list of margarita pizzas and their ratings.
+
+## Basic Architecture
+![infra diagram](docs/infra-diagram.png)
+
+1. CDN Cloudflare CNAMES traffic to Netlify hosted NextJS App
+2. NextJS App uses App router to request data from Google Sheets
+3. NextJS App renders a Menu Bar and list of Pizzas with their reviews
 
 ## Getting Started
 
@@ -6,31 +13,26 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Unit Tests
+There's a suite of unit tests against the low level components. These can be run with:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run test
+```
 
-## Learn More
+They should have 100% coverage of that level, App Router is new, and also new to me, so would be good to spend some time to figure out how to test the React Server components in page.tsx, error.tsx, layout.tsx that would bring the total project to 100% coverage.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
+Deployment is handled by vercel to the domain pizza.maxlew.is
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## More things to do
+- Swap Google Sheets out with a proper database
+  - Although I do like how you get an 'editor' view for free with Sheets
+- Add in some kind of middleware/caching layer between NextJS and Google Sheets
+  - This would avoid a flood of requests all hitting the GSheets API and costing money
+- Bring the GCP setup in here via terraform
+  - Currently just clickopsed the API Key and configuration

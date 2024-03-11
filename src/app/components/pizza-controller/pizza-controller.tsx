@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import MenuBar from "./menu-bar";
-import PizzaList from "./pizza-list";
+import MenuBar from "../menu-bar/menu-bar";
+import PizzaList from "../pizza-list/pizza-list";
 import { MotionConfig, motion } from "framer-motion";
 
 type PizzaControllerProps = {

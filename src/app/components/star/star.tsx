@@ -2,13 +2,15 @@ type StarProps = {
   style: 'Full' | 'Half' | 'Empty'
 }
 
-export default function Star({ style }: StarProps) {
+export default function Star({ style = 'Full' }: StarProps) {
   return (
     <svg
+      data-testid="rating-star"
       className={`
-        w-4 h-4 text-yellow-300 ms-1 text-gray-300
-        ${style === 'Empty' && 'dark:text-gray-500'}
-        ${style === 'Half' && 'dark:text-yellow-50'}
+        w-4 h-4 ms-1
+        ${style === 'Full' && 'text-yellow-300'}
+        ${style === 'Empty' && 'text-gray-500'}
+        ${style === 'Half' && 'text-yellow-50'}
       `}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
