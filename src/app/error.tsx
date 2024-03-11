@@ -1,7 +1,6 @@
 'use client'
-import MenuBar from "./components/menu-bar/menu-bar"
 
- // Error components must be Client Components
+import MenuBar from "./components/menu-bar/menu-bar"
 
 type ErrorComponentProps = {
   error: Error & { digest?: string }
