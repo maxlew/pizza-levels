@@ -18,16 +18,16 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Unit Tests
-There's a suite of unit tests against the low level components. These can be run with:
+There's a suite of unit tests against the low level components there should be 100% coverage of that level. These can be run with:
 
 ```bash
 npm run test
 ```
 
-They should have 100% coverage of that level, App Router is new, and also new to me, so would be good to spend some time to figure out how to test the React Server components in page.tsx, error.tsx, layout.tsx that would bring the total project to 100% coverage.
+App Router is new, and also new to me, so would be good to spend some time to figure out how to test the React Server components in page.tsx, error.tsx, layout.tsx that would bring the total project to 100% coverage.
 
 ## Deployment
-Deployment is handled by vercel to the domain pizza.maxlew.is
+Deployment is handled by netlify to the domain pizza.maxlew.is
 
 ## More things to do
 - Swap Google Sheets out with a proper database
