@@ -1,16 +1,24 @@
-// If i had more time I'd type this properly or find someone elses
+// If I had more time I'd type this properly or find someone elses
 type PoorlyTypedGoogleSheetRow = {
-  values: any;
+  values: {
+    formattedValue: string;
+    effectiveValue: {
+      numberValue: number;
+    }
+  }[]
 }
 
 const getSheet = async (): Promise<PizzaData> => {
-  // Note this has an artificial cap at 50 rows due to the range needing to be included
+  // Note this has an artificial cap at 40 rows due to the range needing to be included
   // At that point I probably should stop using Google Sheets and use MySQL
-  return fetch(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.PIZZA_SHEET_ID}?key=${process.env.GSHEETS_API_KEY}&includeGridData=true&ranges=A2:D50`)
+  return fetch(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.PIZZA_SHEET_ID}?key=${process.env.GSHEETS_API_KEY}&includeGridData=true&ranges=A2:D40`)
     .then(res => res.json())
     .then(sheet => sheet.sheets[0].data[0].rowData)
     .then(sheetData => sheetData.map(parseGoogleSheetsRow).filter(Boolean))
-    .catch(console.error)
+    .catch((err) => {
+      console.error(err);
+      throw new Error('Error requesting data from Google Sheet');
+    })
 }
 
 const parseGoogleSheetsRow = (row: PoorlyTypedGoogleSheetRow): PizzaData | boolean => {
