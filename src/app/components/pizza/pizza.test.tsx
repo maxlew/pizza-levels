@@ -10,7 +10,7 @@ describe('Pizza', () => {
     const pizza = screen.getByTestId('pizza');
     expect(pizza).toBeInTheDocument();
 
-    const restaurantName = screen.getByRole('heading', { level: 3 });
+    const restaurantName = screen.getByRole('heading', { level: 2 });
     expect(restaurantName).toBeInTheDocument();
   });
 
