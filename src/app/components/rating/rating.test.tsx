@@ -19,6 +19,6 @@ describe('Rating', () => {
     expect(svg[1]).toHaveClass('text-yellow-300')
     expect(svg[2]).toHaveClass('text-yellow-300')
     expect(svg[3]).toHaveClass('text-yellow-50')
-    expect(svg[4]).toHaveClass('text-gray-50')
+    expect(svg[4]).toHaveClass('text-gray-500')
   });
 })

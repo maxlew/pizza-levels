@@ -1,16 +1,12 @@
-import Star from "../star/star";
+import Star from "./star/star";
 
 type RatingProps = {
   rating: PizzaData['rating'];
 }
 
 export default function Rating({ rating }: RatingProps) {
-  let hasHalfStar = false;
-  let fullStars = rating;
-  if (rating % 1 !== 0) {
-    hasHalfStar = true;
-    fullStars = Math.floor(rating);
-  }
+  let hasHalfStar = (rating % 1 !== 0);
+  let fullStars = Math.floor(rating);
   const emptyStars = 5 - fullStars - Number(hasHalfStar);
 
   return (
